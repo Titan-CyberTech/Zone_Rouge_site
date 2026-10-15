@@ -1,0 +1,318 @@
+<title>Zone Rouge</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Mise en page : écran de briefing tactique. Bandeau plein cadre avec zone rouge qui se resserre, puis sections sur grille, captures en viseur. Look unique sombre. */
+:root{
+  --nuit:#0E1218; --nuit2:#151B23; --ligne:rgba(236,232,225,.09); --verre:rgba(236,232,225,.04);
+  --craie:#ECE8E1; --brume:#8A93A0; --doux:#B9C0CA; --rouge:#E9483A; --rouge-s:rgba(233,72,58,.14); --laiton:#E3B65B;
+  --f:"Barlow Semi Condensed","Arial Narrow",Arial,sans-serif;
+  --m:"JetBrains Mono",ui-monospace,Consolas,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--nuit);color:var(--craie);font:400 18px/1.55 var(--f);-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;opacity:.05;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--rouge);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1200px;margin:0 auto;padding-left:max(22px,env(safe-area-inset-left,0px));padding-right:max(22px,env(safe-area-inset-right,0px))}
+.carre{display:inline-block;width:.52em;height:.52em;background:var(--rouge);margin-right:.55em;vertical-align:.1em}
+.mono{font-family:var(--m);font-size:13px;letter-spacing:.06em;color:var(--brume);text-transform:uppercase}
+
+/* ---------- navigation */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(14,18,24,.78);backdrop-filter:blur(12px) saturate(1.2);border-bottom:1px solid var(--ligne)}
+header .wrap{display:flex;align-items:center;gap:30px;padding-block:13px}
+.logo{font-weight:800;letter-spacing:.2em;font-size:18px;text-decoration:none;white-space:nowrap}
+nav{display:flex;gap:24px;flex:1}
+nav a{color:var(--brume);text-decoration:none;font-weight:600;position:relative;padding-block:4px}
+nav a::after{content:"";position:absolute;left:50%;bottom:-6px;width:5px;height:5px;background:var(--rouge);transform:translateX(-50%) scale(0);transition:transform .2s}
+nav a:hover{color:var(--craie)} nav a:hover::after{transform:translateX(-50%) scale(1)}
+
+.btn{display:inline-flex;align-items:center;gap:.6em;padding:14px 24px;border-radius:8px;font-weight:700;font-size:17px;text-decoration:none;border:1px solid var(--ligne);background:var(--verre);transition:background .2s,transform .2s}
+.btn:hover{background:rgba(236,232,225,.1)}
+.btn.prim{background:var(--rouge);border-color:transparent;color:#fff;box-shadow:0 10px 30px -10px rgba(233,72,58,.7)}
+.btn.prim:hover{background:#f25a4b;transform:translateY(-1px)}
+.btn .fl{font-family:var(--m);font-size:13px;opacity:.75}
+header .btn{padding:8px 16px;font-size:16px;box-shadow:none}
+
+/* ---------- bandeau */
+.hero{position:relative;overflow:hidden;min-height:min(820px,92vh);display:flex;align-items:center;border-bottom:1px solid var(--ligne)}
+.hero .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:70% 50%;filter:saturate(.95) contrast(1.05)}
+.hero::before{content:"";position:absolute;inset:0;z-index:1;
+  background:linear-gradient(90deg,var(--nuit) 0%,rgba(14,18,24,.9) 30%,rgba(14,18,24,.45) 58%,rgba(14,18,24,.12) 100%),
+             linear-gradient(0deg,var(--nuit) 0%,transparent 30%)}
+/* la zone qui se resserre */
+.zone{position:absolute;z-index:1;right:12%;top:50%;width:min(62vw,720px);aspect-ratio:1;transform:translate(30%,-50%);border-radius:50%;
+  border:1.5px dashed rgba(233,72,58,.55);box-shadow:inset 0 0 120px rgba(233,72,58,.12);pointer-events:none}
+.zone::after{content:"";position:absolute;inset:18%;border-radius:50%;border:1px solid rgba(233,72,58,.25)}
+.hero .wrap{position:relative;z-index:2;padding-block:90px;width:100%}
+.coord{display:flex;gap:18px;flex-wrap:wrap;margin-bottom:22px}
+.coord span{display:flex;align-items:center;gap:8px}
+.live{width:8px;height:8px;border-radius:50%;background:var(--rouge);box-shadow:0 0 0 0 rgba(233,72,58,.6)}
+h1{font-weight:800;font-size:clamp(64px,12.5vw,168px);line-height:.82;letter-spacing:.03em;margin:0 0 26px}
+h1 .r{color:var(--rouge);display:block}
+.hero p{max-width:30em;font-size:clamp(19px,2vw,22px);color:var(--doux);margin:0 0 34px}
+.actions{display:flex;gap:12px;flex-wrap:wrap}
+.chiffres{display:flex;gap:42px;flex-wrap:wrap;margin-top:56px;padding-top:24px;border-top:1px solid var(--ligne);max-width:640px}
+.chiffres b{display:block;font-size:34px;line-height:1;font-weight:700;font-variant-numeric:tabular-nums}
+.chiffres span{color:var(--brume);font-size:15px}
+
+/* ---------- sections */
+section{padding-block:clamp(60px,7vw,96px);border-bottom:1px solid var(--ligne);position:relative}
+.tete{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:24px 60px;align-items:end;margin-bottom:40px}
+.tete .mono{grid-column:1/-1}
+h2{font-size:clamp(38px,5.4vw,64px);line-height:.98;margin:0;font-weight:800;text-wrap:balance}
+.intro{color:var(--doux);margin:0;max-width:34em}
+
+/* modes */
+.modes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border:1px solid var(--ligne);border-radius:14px;overflow:hidden}
+.mode{padding:30px 28px 32px;position:relative;transition:background .25s}
+.mode+.mode{border-left:1px solid var(--ligne)}
+.mode:hover{background:var(--verre)}
+.mode .ico{width:46px;height:46px;margin-bottom:26px;color:var(--rouge)}
+.mode h3{margin:0 0 4px;font-size:27px;line-height:1.1}
+.mode .regle{font-family:var(--m);font-size:12.5px;color:var(--laiton);letter-spacing:.04em;margin-bottom:14px}
+.mode p{margin:0;color:var(--doux)}
+
+/* galerie en viseur */
+.gal{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 20px}
+.vis{margin:0;min-width:0;position:relative}
+.vis .cadre{position:relative;border-radius:10px;overflow:hidden;border:1px solid var(--ligne)}
+.vis img{display:block;width:100%;transition:transform .6s ease}
+.vis:hover img{transform:scale(1.03)}
+.vis .cadre::before,.vis .cadre::after{content:"";position:absolute;width:22px;height:22px;z-index:1;border-color:var(--rouge);border-style:solid}
+.vis .cadre::before{top:10px;left:10px;border-width:2px 0 0 2px}
+.vis .cadre::after{bottom:10px;right:10px;border-width:0 2px 2px 0}
+.vis figcaption{display:flex;justify-content:space-between;gap:10px;margin-top:10px;color:var(--doux);font-size:16px}
+
+/* cartes du jeu */
+.cartes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.carte{border-radius:14px;aspect-ratio:4/3;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden;border:1px solid var(--ligne);padding:26px;isolation:isolate}
+.carte img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform .7s ease}
+.carte::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(0deg,rgba(14,18,24,.94) 0%,rgba(14,18,24,.55) 38%,transparent 70%)}
+.carte:hover img{transform:scale(1.05)}
+.carte .mono{color:var(--laiton)}
+.carte h3{margin:6px 0 6px;font-size:32px;line-height:1}
+.carte p{margin:0;color:var(--doux)}
+
+/* nouveautés */
+.chrono{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0 60px}
+.chrono li{display:grid;grid-template-columns:76px minmax(0,1fr);gap:18px;padding:22px 0;border-top:1px solid var(--ligne);position:relative}
+.chrono li:first-child,.chrono li:nth-child(2){border-top-color:var(--rouge)}
+.chrono b{font-family:var(--m);font-weight:500;font-size:19px;color:var(--craie)}
+.chrono li:first-child b{color:var(--rouge)}
+.chrono p{margin:0;color:var(--doux);font-size:17px}
+.chrono p strong{color:var(--craie);font-weight:600}
+
+/* téléchargement */
+#telecharger{background:radial-gradient(70% 90% at 85% 10%,var(--rouge-s),transparent 70%)}
+.dl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.sys{background:var(--nuit2);border:1px solid var(--ligne);border-radius:16px;padding:32px;display:flex;flex-direction:column;gap:18px}
+.sys .haut{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.sys h3{margin:0;font-size:30px}
+.sys ol{margin:0;padding:0;list-style:none;counter-reset:e;display:grid;gap:12px;color:var(--doux)}
+.sys li{counter-increment:e;display:grid;grid-template-columns:28px minmax(0,1fr);gap:10px}
+.sys li::before{content:counter(e);font-family:var(--m);font-size:13px;color:var(--rouge);border:1px solid rgba(233,72,58,.4);border-radius:6px;height:26px;display:grid;place-items:center}
+.sys code{font-family:var(--m);font-size:13.5px;background:rgba(0,0,0,.35);padding:2px 7px;border-radius:5px;color:var(--craie);word-break:break-all}
+.sys .btn{align-self:flex-start;margin-top:auto}
+.note{color:var(--brume);font-size:15.5px;margin:28px 0 0;max-width:48em}
+
+/* réseau */
+.reseau{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.port{border-top:2px solid var(--ligne);padding-top:20px}
+.port:first-child{border-top-color:var(--rouge)}
+.port b{display:block;font-family:var(--m);font-weight:500;font-size:30px;color:var(--craie);letter-spacing:.02em;margin-bottom:6px}
+.port span{color:var(--doux)}
+
+footer{padding-block:44px}
+footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;color:var(--brume);font-size:15px}
+footer a{color:var(--doux)}
+
+@media (max-width:860px){
+  nav{display:none}
+  .tete{grid-template-columns:1fr}
+  .modes,.cartes,.reseau,.dl,.gal,.chrono{grid-template-columns:1fr}
+  .chrono li:nth-child(2){border-top-color:var(--ligne)}
+  .chrono li{grid-template-columns:60px minmax(0,1fr)}
+  .mode+.mode{border-left:0;border-top:1px solid var(--ligne)}
+  .hero{min-height:0}
+  .hero::before{background:linear-gradient(180deg,rgba(14,18,24,.55),var(--nuit) 80%)}
+  .zone{right:-20%;width:110vw}
+  .chiffres{gap:28px}
+  .btn .fl{display:none}
+}
+@media (prefers-reduced-motion:no-preference){
+  .live{animation:pouls 2s infinite}
+  @keyframes pouls{70%{box-shadow:0 0 0 10px rgba(233,72,58,0)}100%{box-shadow:0 0 0 0 rgba(233,72,58,0)}}
+  .zone{animation:resserre 14s ease-in-out infinite alternate}
+  @keyframes resserre{to{transform:translate(30%,-50%) scale(.86) rotate(25deg)}}
+  .hero h1,.hero p,.hero .actions{animation:entre .8s cubic-bezier(.2,.7,.2,1) both}
+  .hero p{animation-delay:.1s}.hero .actions{animation-delay:.2s}
+  @keyframes entre{from{transform:translateY(16px);opacity:.3}}
+}
+</style>
+
+<header>
+  <div class="wrap">
+    <a class="logo" href="#haut"><span class="carre"></span>ZONE ROUGE</a>
+    <nav aria-label="Sections">
+      <a href="#modes">Modes</a><a href="#apercu">Aperçu</a><a href="#cartes">Cartes</a><a href="#nouveautes">Nouveautés</a><a href="#jouer">Jouer entre potes</a>
+    </nav>
+    <a class="btn prim" href="#telecharger">Télécharger</a>
+  </div>
+</header>
+
+<div class="hero" id="haut">
+  <img class="bg" src="img/hero.jpg" alt="">
+  <div class="zone" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="coord mono"><span><i class="live"></i>Version 3.5.0</span><span>Gratuit, sans compte</span><span>12 joueurs max.</span></div>
+    <h1>ZONE<span class="r">ROUGE</span></h1>
+    <p>Le FPS entre potes. Héberge une partie en un clic, en réseau local ou par Internet, et règle tes comptes en match à mort, en mêlée ou au désamorçage.</p>
+    <div class="actions">
+      <a class="btn prim" href="#telecharger">Télécharger gratuitement <span class="fl">Windows · Linux</span></a>
+      <a class="btn" href="#apercu">Voir le jeu</a>
+    </div>
+    <div class="chiffres">
+      <div><b>3</b><span>modes de jeu</span></div>
+      <div><b>10</b><span>armes et un couteau</span></div>
+      <div><b>100</b><span>paliers de passe gratuits</span></div>
+    </div>
+  </div>
+</div>
+
+<section id="modes">
+  <div class="wrap">
+    <div class="tete">
+      <div class="mono"><span class="carre"></span>Modes de jeu</div>
+      <h2>Trois façons de s'affronter</h2>
+      <p class="intro">Choisis le mode, la carte et le nombre de bots. Tes potes voient ta partie apparaître dans leur liste et te rejoignent, même en cours de route.</p>
+    </div>
+    <div class="modes">
+      <article class="mode">
+        <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="16" cy="24" r="9"/><circle cx="32" cy="24" r="9"/></svg>
+        <h3>Match à mort par équipe</h3>
+        <div class="regle">ALPHA CONTRE BRAVO · RÉAPPARITIONS</div>
+        <p>Atteignez l'objectif d'éliminations avant l'autre équipe, ou menez au score à la fin du temps.</p>
+      </article>
+      <article class="mode">
+        <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="24" cy="24" r="14"/><path d="M24 4v10M24 34v10M4 24h10M34 24h10"/></svg>
+        <h3>Mêlée générale</h3>
+        <div class="regle">CHACUN POUR SOI</div>
+        <p>Pas d'alliés, pas d'excuses. Le premier à l'objectif gagne, le podium touche une prime.</p>
+      </article>
+      <article class="mode">
+        <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><rect x="10" y="16" width="28" height="22" rx="3"/><path d="M18 16v-5h12v5M24 23v8"/></svg>
+        <h3>Désamorçage</h3>
+        <div class="regle">13 MANCHES · BOMBE 40 S</div>
+        <p>Pose la bombe sur A ou B, ou désamorce-la à temps. Une seule vie par manche, mi-temps à 12.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="apercu">
+  <div class="wrap">
+    <div class="tete">
+      <div class="mono"><span class="carre"></span>Aperçu</div>
+      <h2>Dans le viseur</h2>
+      <p class="intro">Collections de skins avec couteau et finisher, soldat personnalisable, emotes, quêtes et mode classé avec placements.</p>
+    </div>
+    <div class="gal">
+      <figure class="vis"><div class="cadre"><img src="img/desamorcage.jpg" alt="Pose de la bombe sur le site A au Port de Nuit" loading="lazy"></div><figcaption><span>Pose de la bombe au Port de Nuit</span><span class="mono">Désamorçage</span></figcaption></figure>
+      <figure class="vis"><div class="cadre"><img src="img/menu.jpg" alt="Menu principal avec le soldat personnalisé" loading="lazy"></div><figcaption><span>Le menu, ton soldat et tes amis</span><span class="mono">Accueil</span></figcaption></figure>
+      <figure class="vis"><div class="cadre"><img src="img/boutique.jpg" alt="Boutique, collection Tempête" loading="lazy"></div><figcaption><span>La boutique et ses collections</span><span class="mono">Skins</span></figcaption></figure>
+      <figure class="vis"><div class="cadre"><img src="img/passe.jpg" alt="Passe de combat de la saison 1" loading="lazy"></div><figcaption><span>Le passe de combat gratuit</span><span class="mono">Saison 1</span></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section id="cartes">
+  <div class="wrap">
+    <div class="tete">
+      <div class="mono"><span class="carre"></span>Terrains</div>
+      <h2>Trois cartes, trois ambiances</h2>
+      <p class="intro">Par défaut la carte est tirée au sort à chaque partie, jamais deux fois de suite la même. L'hôte peut aussi en imposer une.</p>
+    </div>
+    <div class="cartes">
+      <div class="carte"><img src="img/carte_ville.jpg" alt="" loading="lazy"><span class="mono">Crépuscule</span><h3>Vieille Ville</h3><p>Ruelles méditerranéennes au coucher du soleil.</p></div>
+      <div class="carte"><img src="img/carte_port.jpg" alt="" loading="lazy"><span class="mono">Nuit</span><h3>Port de Nuit</h3><p>Docks, conteneurs et grues sous les projecteurs.</p></div>
+      <div class="carte"><img src="img/carte_arctique.jpg" alt="" loading="lazy"><span class="mono">Neige</span><h3>Station Polaire</h3><p>Base scientifique isolée dans le blizzard.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="nouveautes">
+  <div class="wrap">
+    <div class="tete">
+      <div class="mono"><span class="carre"></span>Nouveautés</div>
+      <h2>Un jeu qui évolue</h2>
+      <p class="intro">Chaque version s'installe toute seule au lancement. Voici ce qui a changé depuis la sortie.</p>
+    </div>
+    <ol class="chrono">
+      <li><b>3.5</b><p><strong>Menus redessinés</strong>, plus clairs et plus épurés, et un réseau plus fiable : plus de joueur qui en voit un autre sans être vu.</p></li>
+      <li><b>3.4</b><p><strong>Le jeu sort sous Linux</strong>, en multijoueur avec les joueurs Windows.</p></li>
+      <li><b>3.3</b><p><strong>Écrans de chargement</strong> avec astuces, et vue d'ensemble de la carte avant la première manche du Désamorçage.</p></li>
+      <li><b>3.2</b><p><strong>Mises à jour automatiques</strong> : plus besoin de retélécharger le jeu.</p></li>
+      <li><b>3.1</b><p><strong>Jeu à la manette</strong> (Xbox, PlayStation…), menus compris.</p></li>
+      <li><b>3.0</b><p><strong>Saison 1 « Lumières »</strong> : passe de combat gratuit, quêtes, mode classé et roulette des cartes.</p></li>
+    </ol>
+  </div>
+</section>
+
+
+<section id="telecharger">
+  <div class="wrap">
+    <div class="tete">
+      <div class="mono"><span class="carre"></span>Télécharger</div>
+      <h2>Prêt en deux minutes</h2>
+      <p class="intro">Gratuit, sans compte. Les joueurs Windows et Linux se retrouvent dans les mêmes parties, et le jeu se met à jour tout seul.</p>
+    </div>
+    <div class="dl">
+      <div class="sys">
+        <div class="haut"><h3>Windows</h3><span class="mono">10 / 11 · 64 bits</span></div>
+        <ol>
+          <li><span>Télécharge <code>ZoneRouge_Windows_v3.5.0.zip</code></span></li>
+          <li><span>Dézippe-le sur le Bureau ou dans Documents, pas dans Program Files</span></li>
+          <li><span>Lance <code>ZoneRouge.exe</code> et choisis ton pseudo</span></li>
+        </ol>
+        <a class="btn prim" href="https://github.com/Titan-CyberTech/Zone_Rouge/releases/latest">Télécharger pour Windows</a>
+      </div>
+      <div class="sys">
+        <div class="haut"><h3>Linux</h3><span class="mono">64 bits · Vulkan</span></div>
+        <ol>
+          <li><span>Télécharge <code>ZoneRouge_Linux_v3.5.0.zip</code></span></li>
+          <li><span>Dézippe-le dans ton dossier personnel</span></li>
+          <li><span>Lance <code>./ZoneRouge.x86_64</code> (si besoin <code>chmod +x</code>)</span></li>
+        </ol>
+        <a class="btn" href="https://github.com/Titan-CyberTech/Zone_Rouge/releases/latest">Télécharger pour Linux</a>
+      </div>
+    </div>
+    <p class="note">Si Windows affiche « Windows a protégé votre ordinateur » (le jeu n'est pas signé), clique sur « Informations complémentaires » puis « Exécuter quand même ».</p>
+  </div>
+</section>
+
+<section id="jouer">
+  <div class="wrap">
+    <div class="tete">
+      <div class="mono"><span class="carre"></span>Multijoueur</div>
+      <h2>Jouer entre potes</h2>
+      <p class="intro">Même box ou même Wi-Fi : la partie apparaît toute seule. Par Internet, passez par un VPN de jeu gratuit (Radmin VPN, ZeroTier, Tailscale) ou ouvrez les ports chez l'hôte.</p>
+    </div>
+    <div class="reseau">
+      <div class="port"><b>7777</b><span>Port UDP des parties</span></div>
+      <div class="port"><b>7778</b><span>Port UDP des amis et des invitations</span></div>
+      <div class="port"><b>3.5.0</b><span>Même version pour tout le monde : relancez le jeu, il se met à jour</span></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span><span class="carre"></span>Zone Rouge, fait avec Godot 4.5</span>
+    <a href="https://github.com/Titan-CyberTech/Zone_Rouge">Code et versions sur GitHub</a>
+  </div>
+</footer>
