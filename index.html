@@ -25,6 +25,7 @@
 <meta name="twitter:description" content="Zone Rouge est un FPS en réseau gratuit pour Windows et Linux : match à mort par équipe, mêlée générale et désamorçage, 3 cartes, passe de combat gratuit et skins. Héberge une partie entre potes en un clic.">
 <meta name="twitter:image" content="https://zonerouge.online/og.jpg">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"VideoGame","name":"Zone Rouge","url":"https://zonerouge.online/","inLanguage":"fr","description":"Zone Rouge est un FPS en réseau gratuit pour Windows et Linux : match à mort par équipe, mêlée générale et désamorçage, 3 cartes, passe de combat gratuit et skins. Héberge une partie entre potes en un clic.","image":"https://zonerouge.online/og.jpg","genre":["FPS","Jeu de tir","Multijoueur"],"gamePlatform":["Windows","Linux"],"operatingSystem":"Windows 10, Windows 11, Linux 64 bits","applicationCategory":"Game","playMode":"MultiPlayer","numberOfPlayers":{"@type":"QuantitativeValue","minValue":1,"maxValue":12},"softwareVersion":"3.5.0","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR","availability":"https://schema.org/InStock","url":"https://github.com/Titan-CyberTech/Zone_Rouge/releases/latest"},"downloadUrl":"https://github.com/Titan-CyberTech/Zone_Rouge/releases/latest","sameAs":["https://github.com/Titan-CyberTech/Zone_Rouge"]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Est-ce que Zone Rouge est gratuit ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui, le jeu est entièrement gratuit, sans compte et sans publicité. Le passe de combat de 100 paliers est gratuit aussi, avec un skin secret au palier 100."}}, {"@type": "Question", "name": "Comment jouer avec des amis à distance ?", "acceptedAnswer": {"@type": "Answer", "text": "Sur le même réseau (même box ou même Wi-Fi), la partie apparaît toute seule dans la liste. Par Internet, le plus simple est un VPN de jeu gratuit (Radmin VPN, ZeroTier ou Tailscale) : tout le monde rejoint le même réseau virtuel. Sinon, l'hôte ouvre les ports UDP 7777 et 7778 sur sa box."}}, {"@type": "Question", "name": "Les joueurs Windows et Linux peuvent-ils jouer ensemble ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui, ils jouent dans les mêmes parties. Il faut simplement que tout le monde ait la même version du jeu : au lancement, Zone Rouge vérifie la dernière version et se met à jour tout seul."}}, {"@type": "Question", "name": "Windows affiche « Windows a protégé votre ordinateur ». C'est normal ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui, le jeu n'est pas signé numériquement, ce qui déclenche cet avertissement pour tout logiciel peu répandu. Clique sur « Informations complémentaires », puis sur « Exécuter quand même »."}}, {"@type": "Question", "name": "Peut-on jouer à la manette ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui, le jeu se joue entièrement à la manette (Xbox, PlayStation et compatibles), menus compris."}}, {"@type": "Question", "name": "Faut-il être connecté à Internet pour jouer ?", "acceptedAnswer": {"@type": "Answer", "text": "Non. L'entraînement se joue hors ligne contre des bots, sur la carte et le mode de ton choix. Internet ou un réseau local ne servent que pour jouer avec d'autres personnes."}}, {"@type": "Question", "name": "Le jeu est-il disponible sur Mac ?", "acceptedAnswer": {"@type": "Answer", "text": "Pas pour l'instant : Zone Rouge existe pour Windows 10 et 11 (64 bits) et pour Linux (64 bits)."}}]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap">
@@ -62,6 +63,10 @@ nav a:hover{color:var(--craie)} nav a:hover::after{transform:translateX(-50%) sc
 .btn.prim{background:var(--rouge);border-color:transparent;color:#fff;box-shadow:0 10px 30px -10px rgba(233,72,58,.7)}
 .btn.prim:hover{background:#f25a4b;transform:translateY(-1px)}
 .btn .fl{font-family:var(--m);font-size:13px;opacity:.75}
+.btn .fl:empty{display:none}
+.sys.pour-toi{border-color:rgba(233,72,58,.55);box-shadow:0 0 0 1px rgba(233,72,58,.25),0 24px 60px -30px rgba(233,72,58,.5)}
+.sys .tag{display:none;font-family:var(--m);font-size:12px;color:var(--rouge);letter-spacing:.06em}
+.sys.pour-toi .tag{display:inline}
 header .btn{padding:8px 16px;font-size:16px;box-shadow:none}
 
 /* ---------- bandeau */
@@ -146,6 +151,19 @@ h2{font-size:clamp(38px,5.4vw,64px);line-height:.98;margin:0;font-weight:800;tex
 .sys .btn{align-self:flex-start;margin-top:auto}
 .note{color:var(--brume);font-size:15.5px;margin:28px 0 0;max-width:48em}
 
+
+/* questions fréquentes */
+.faq{max-width:860px;border-top:1px solid var(--ligne)}
+.faq details{border-bottom:1px solid var(--ligne)}
+.faq summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:22px 0;font-size:21px;font-weight:600;line-height:1.25}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";flex:none;width:12px;height:12px;background:var(--rouge);transition:transform .25s;clip-path:polygon(40% 0,60% 0,60% 40%,100% 40%,100% 60%,60% 60%,60% 100%,40% 100%,40% 60%,0 60%,0 40%,40% 40%)}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq summary:hover{color:#fff}
+.faq .rep{padding:0 40px 24px 0;color:var(--doux);max-width:46em}
+.faq .rep p{margin:0}
+.live-ver{display:none}
+
 /* réseau */
 .reseau{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
 .port{border-top:2px solid var(--ligne);padding-top:20px}
@@ -186,7 +204,7 @@ footer a{color:var(--doux)}
   <div class="wrap">
     <a class="logo" href="#haut"><span class="carre"></span>ZONE ROUGE</a>
     <nav aria-label="Sections">
-      <a href="#modes">Modes</a><a href="#apercu">Aperçu</a><a href="#cartes">Cartes</a><a href="#nouveautes">Nouveautés</a><a href="#jouer">Jouer entre potes</a>
+      <a href="#modes">Modes</a><a href="#apercu">Aperçu</a><a href="#cartes">Cartes</a><a href="#nouveautes">Nouveautés</a><a href="#jouer">Jouer entre potes</a><a href="#faq">Questions</a>
     </nav>
     <a class="btn prim" href="#telecharger">Télécharger</a>
   </div>
@@ -196,11 +214,11 @@ footer a{color:var(--doux)}
   <img class="bg" src="img/hero.jpg" alt="">
   <div class="zone" aria-hidden="true"></div>
   <div class="wrap">
-    <div class="coord mono"><span><i class="live"></i>Version 3.5.0</span><span>Gratuit, sans compte</span><span>12 joueurs max.</span></div>
+    <div class="coord mono"><span><i class="live"></i>Version <span id="ver">3.5.0</span></span><span>Gratuit, sans compte</span><span>12 joueurs max.</span></div>
     <h1>ZONE<span class="r">ROUGE</span></h1>
     <p>Le FPS entre potes. Héberge une partie en un clic, en réseau local ou par Internet, et règle tes comptes en match à mort, en mêlée ou au désamorçage.</p>
     <div class="actions">
-      <a class="btn prim" href="#telecharger">Télécharger gratuitement <span class="fl">Windows · Linux</span></a>
+      <a class="btn prim" id="dl-hero" href="#telecharger"><span id="dl-hero-t">Télécharger gratuitement</span> <span class="fl" id="dl-hero-f">Windows · Linux</span></a>
       <a class="btn" href="#apercu">Voir le jeu</a>
     </div>
     <div class="chiffres">
@@ -299,23 +317,23 @@ footer a{color:var(--doux)}
       <p class="intro">Gratuit, sans compte. Les joueurs Windows et Linux se retrouvent dans les mêmes parties, et le jeu se met à jour tout seul.</p>
     </div>
     <div class="dl">
-      <div class="sys">
-        <div class="haut"><h3>Windows</h3><span class="mono">10 / 11 · 64 bits</span></div>
+      <div class="sys" id="sys-win">
+        <div class="haut"><h3>Windows <span class="tag">pour ton PC</span></h3><span class="mono">10 / 11 · 64 bits</span></div>
         <ol>
           <li><span>Télécharge <code>ZoneRouge_Windows_v3.5.0.zip</code></span></li>
           <li><span>Dézippe-le sur le Bureau ou dans Documents, pas dans Program Files</span></li>
           <li><span>Lance <code>ZoneRouge.exe</code> et choisis ton pseudo</span></li>
         </ol>
-        <a class="btn prim" href="https://github.com/Titan-CyberTech/Zone_Rouge/releases/latest">Télécharger pour Windows</a>
+        <a class="btn prim" id="dl-win" href="https://github.com/Titan-CyberTech/Zone_Rouge/releases/latest">Télécharger pour Windows <span class="fl"></span></a>
       </div>
-      <div class="sys">
-        <div class="haut"><h3>Linux</h3><span class="mono">64 bits · Vulkan</span></div>
+      <div class="sys" id="sys-lin">
+        <div class="haut"><h3>Linux <span class="tag">pour ton PC</span></h3><span class="mono">64 bits · Vulkan</span></div>
         <ol>
           <li><span>Télécharge <code>ZoneRouge_Linux_v3.5.0.zip</code></span></li>
           <li><span>Dézippe-le dans ton dossier personnel</span></li>
           <li><span>Lance <code>./ZoneRouge.x86_64</code> (si besoin <code>chmod +x</code>)</span></li>
         </ol>
-        <a class="btn" href="https://github.com/Titan-CyberTech/Zone_Rouge/releases/latest">Télécharger pour Linux</a>
+        <a class="btn" id="dl-lin" href="https://github.com/Titan-CyberTech/Zone_Rouge/releases/latest">Télécharger pour Linux <span class="fl"></span></a>
       </div>
     </div>
     <p class="note">Si Windows affiche « Windows a protégé votre ordinateur » (le jeu n'est pas signé), clique sur « Informations complémentaires » puis « Exécuter quand même ».</p>
@@ -337,11 +355,62 @@ footer a{color:var(--doux)}
   </div>
 </section>
 
+<section id="faq">
+  <div class="wrap">
+    <div class="tete">
+      <div class="mono"><span class="carre"></span>Questions fréquentes</div>
+      <h2>Avant de jouer</h2>
+      <p class="intro">Les réponses aux questions qui reviennent le plus. Il t'en reste une ? Ouvre un ticket sur la page GitHub du jeu.</p>
+    </div>
+    <div class="faq">
+      <details><summary>Est-ce que Zone Rouge est gratuit ?</summary><div class="rep"><p>Oui, le jeu est entièrement gratuit, sans compte et sans publicité. Le passe de combat de 100 paliers est gratuit aussi, avec un skin secret au palier 100.</p></div></details>
+      <details><summary>Comment jouer avec des amis à distance ?</summary><div class="rep"><p>Sur le même réseau (même box ou même Wi-Fi), la partie apparaît toute seule dans la liste. Par Internet, le plus simple est un VPN de jeu gratuit (Radmin VPN, ZeroTier ou Tailscale) : tout le monde rejoint le même réseau virtuel. Sinon, l'hôte ouvre les ports UDP 7777 et 7778 sur sa box.</p></div></details>
+      <details><summary>Les joueurs Windows et Linux peuvent-ils jouer ensemble ?</summary><div class="rep"><p>Oui, ils jouent dans les mêmes parties. Il faut simplement que tout le monde ait la même version du jeu : au lancement, Zone Rouge vérifie la dernière version et se met à jour tout seul.</p></div></details>
+      <details><summary>Windows affiche « Windows a protégé votre ordinateur ». C'est normal ?</summary><div class="rep"><p>Oui, le jeu n'est pas signé numériquement, ce qui déclenche cet avertissement pour tout logiciel peu répandu. Clique sur « Informations complémentaires », puis sur « Exécuter quand même ».</p></div></details>
+      <details><summary>Peut-on jouer à la manette ?</summary><div class="rep"><p>Oui, le jeu se joue entièrement à la manette (Xbox, PlayStation et compatibles), menus compris.</p></div></details>
+      <details><summary>Faut-il être connecté à Internet pour jouer ?</summary><div class="rep"><p>Non. L'entraînement se joue hors ligne contre des bots, sur la carte et le mode de ton choix. Internet ou un réseau local ne servent que pour jouer avec d'autres personnes.</p></div></details>
+      <details><summary>Le jeu est-il disponible sur Mac ?</summary><div class="rep"><p>Pas pour l'instant : Zone Rouge existe pour Windows 10 et 11 (64 bits) et pour Linux (64 bits).</p></div></details>
+    </div>
+  </div>
+</section>
+
 <footer>
   <div class="wrap">
-    <span><span class="carre"></span>Zone Rouge, fait avec Godot 4.5</span>
-    <a href="https://github.com/Titan-CyberTech/Zone_Rouge">Code et versions sur GitHub</a>
+    <span><span class="carre"></span>Zone Rouge, un jeu fait avec Godot 4.5. Projet indépendant, gratuit et sans publicité.</span>
+    <span><a href="https://github.com/Titan-CyberTech/Zone_Rouge">Code et versions sur GitHub</a> · <a href="https://github.com/Titan-CyberTech/Zone_Rouge/releases">Toutes les versions</a> · <a href="#haut">Haut de page</a></span>
   </div>
 </footer>
+<script>
+(function(){
+  var REPO="Titan-CyberTech/Zone_Rouge", $=function(i){return document.getElementById(i)};
+  var ua=navigator.userAgent||"", plat=(navigator.userAgentData&&navigator.userAgentData.platform)||navigator.platform||"";
+  var mobile=/Android|iPhone|iPad|iPod/i.test(ua);
+  var os=mobile?"":(/Win/i.test(plat+ua)?"win":(/Linux|X11/i.test(plat+ua)?"lin":""));
+  if(os){
+    $("sys-"+os).classList.add("pour-toi");
+    $("dl-hero-t").textContent="Télécharger pour "+(os==="win"?"Windows":"Linux");
+    $("dl-hero-f").textContent="";
+    $("dl-hero").setAttribute("href","#telecharger");
+  }
+  function mo(n){return (n/1048576).toFixed(0).replace(".",",")+" Mo"}
+  try{
+    fetch("https://api.github.com/repos/"+REPO+"/releases/latest",{headers:{Accept:"application/vnd.github+json"}})
+      .then(function(r){return r.ok?r.json():null}).then(function(j){
+        if(!j||!j.assets)return;
+        var v=(j.tag_name||"").replace(/^v/,""); if(v)$("ver").textContent=v;
+        j.assets.forEach(function(a){
+          if(!/\.zip$/i.test(a.name))return;
+          var id=/linux/i.test(a.name)?"dl-lin":(/windows/i.test(a.name)?"dl-win":null);
+          if(!id)return;
+          $(id).setAttribute("href",a.browser_download_url);
+          $(id).querySelector(".fl").textContent=mo(a.size);
+        });
+        document.querySelectorAll("code").forEach(function(c){
+          c.textContent=c.textContent.replace(/v\d+\.\d+\.\d+/,"v"+v);
+        });
+      }).catch(function(){});
+  }catch(e){}
+})();
+</script>
 </body>
 </html>
