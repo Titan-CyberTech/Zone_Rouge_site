@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Jouer à Zone Rouge entre potes : réseau local, VPN ou Internet</title>
+<meta name="description" content="Comment jouer à Zone Rouge avec tes amis : même Wi-Fi, VPN de jeu gratuit (Radmin VPN, ZeroTier, Tailscale) ou ports UDP 7777 et 7778 ouverts chez l'hôte.">
+<meta name="theme-color" content="#0E1218">
+<link rel="canonical" href="https://zonerouge.online/reseau.html">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-48.png" sizes="48x48" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Zone Rouge">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:url" content="https://zonerouge.online/reseau.html">
+<meta property="og:title" content="Jouer à Zone Rouge entre potes : réseau local, VPN ou Internet">
+<meta property="og:description" content="Comment jouer à Zone Rouge avec tes amis : même Wi-Fi, VPN de jeu gratuit (Radmin VPN, ZeroTier, Tailscale) ou ports UDP 7777 et 7778 ouverts chez l'hôte.">
+<meta property="og:image" content="https://zonerouge.online/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Zone Rouge, le FPS entre potes">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Jouer à Zone Rouge entre potes : réseau local, VPN ou Internet">
+<meta name="twitter:description" content="Comment jouer à Zone Rouge avec tes amis : même Wi-Fi, VPN de jeu gratuit (Radmin VPN, ZeroTier, Tailscale) ou ports UDP 7777 et 7778 ouverts chez l'hôte.">
+<meta name="twitter:image" content="https://zonerouge.online/og.jpg">
+<link rel="preload" href="fonts/stencil.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/barlow-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/barlow-700.woff2" as="font" type="font/woff2" crossorigin>
+<script>document.documentElement.classList.add("js");try{if(localStorage.getItem("zr-calme")==="1")document.documentElement.classList.add("calme")}catch(e){}setTimeout(function(){if(!window.__zr)document.documentElement.classList.remove("js")},4000)</script>
+<link rel="stylesheet" href="site.e6ce3422.css">
+<script src="site.01c803fd.js" defer></script>
+</head>
+<body id="haut">
+<a class="skip" href="#contenu">Aller au contenu</a>
+<header>
+  <div class="wrap">
+    <a class="logo" href="index.html"><span class="carre"></span>ZONE ROUGE</a>
+    <nav id="menu" aria-label="Pages du site"><a href="index.html">Accueil</a><a href="le-jeu.html">Le jeu</a><a href="arsenal.html">Arsenal</a><a href="reseau.html" aria-current="page">Jouer entre potes</a><a href="nouveautes.html">Nouveautés</a><a href="faq.html">Questions</a></nav>
+    <a class="btn prim" href="telecharger.html">Télécharger</a>
+    <button class="burger" id="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="menu"><i></i></button>
+  </div>
+  <div class="prog" aria-hidden="true"><i></i></div>
+</header>
+<main id="contenu">
+<div class="ph">
+  <div class="zone-s" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="eti"><span class="carre"></span>Multijoueur</div>
+    <h1>Jouer entre potes</h1>
+    <p>Même box ou même Wi-Fi, ou à l'autre bout du pays : trois façons de se retrouver dans la même partie, du plus simple au plus technique.</p>
+    
+  </div>
+</div>
+<section id="voies">
+  <div class="wrap">
+    <div class="tete" data-io>
+      <div class="eti"><span class="carre"></span>Trois voies</div>
+      <h2 class="m"><span>Choisis la plus simple pour vous</span></h2>
+      <p class="intro">Dans tous les cas, tout le monde doit avoir la même version du jeu : relancez-le, il se met à jour tout seul.</p>
+    </div>
+    <div class="voies">
+      <div class="voie" data-r><svg class="schema" viewBox="0 0 240 128" role="img" aria-label="Deux joueurs reliés à la même box ou au même Wi-Fi"><path class="wifi" d="M113.6 41.3A10 10 0 0 1 126.4 41.3"/><path class="wifi" style="animation-delay:.25s" d="M108.4 35.2A18 18 0 0 1 131.6 35.2"/><path class="wifi" style="animation-delay:.5s" d="M103.3 29.1A26 26 0 0 1 136.7 29.1"/><rect class="noeud" x="94" y="52" width="52" height="30" rx="6"/><circle class="led" cx="106" cy="67" r="2.6"/><circle class="led" cx="116" cy="67" r="2.6"/><path class="g-l" d="M128 67h10"/><path class="flux" d="M47 70L94 68"/><path class="flux" d="M146 68L193 70"/><circle class="noeud" cx="32" cy="72" r="15"/><text x="32" y="76.5" text-anchor="middle">A</text><circle class="noeud" cx="208" cy="72" r="15"/><text x="208" y="76.5" text-anchor="middle">B</text><text class="s-t" x="120" y="118" text-anchor="middle">MÊME BOX OU MÊME WI-FI</text></svg><span class="eti">Le plus simple</span><h3>Même réseau</h3><p>Vous êtes sur la même box ou le même Wi-Fi ? La partie apparaît toute seule dans la liste de tes potes.</p>
+        <ul><li>L'hôte lance une partie en ligne</li><li>Les autres l'y voient et la rejoignent</li></ul></div>
+      <div class="voie" data-r style="--d:1"><svg class="schema" viewBox="0 0 240 128" role="img" aria-label="Deux joueurs éloignés reliés par un tunnel VPN"><path class="g-l" d="M33 88Q44 98 107 92M207 88Q196 98 133 92" stroke-dasharray="2 5"/><circle class="g-l" cx="120" cy="91" r="13"/><ellipse class="g-l" cx="120" cy="91" rx="5.5" ry="13"/><path class="g-l" d="M107 91h26"/><path class="flux" d="M42 60C78 8 162 8 198 60"/><rect class="noeud" x="98" y="20" width="44" height="22" rx="11"/><text x="120" y="35" text-anchor="middle">VPN</text><circle class="noeud" cx="32" cy="72" r="15"/><text x="32" y="76.5" text-anchor="middle">A</text><circle class="noeud" cx="208" cy="72" r="15"/><text x="208" y="76.5" text-anchor="middle">B</text><text class="s-t" x="120" y="123" text-anchor="middle">UN RÉSEAU VIRTUEL, GRATUIT</text></svg><span class="eti">Conseillé à distance</span><h3>Un VPN de jeu</h3><p>Radmin VPN, ZeroTier ou Tailscale créent un réseau virtuel gratuit : le jeu se comporte comme si vous étiez sur le même Wi-Fi.</p>
+        <ul><li>Tout le monde installe le même VPN</li><li>Vous rejoignez le même réseau</li><li>Puis comme sur un réseau local</li></ul></div>
+      <div class="voie" data-r style="--d:2"><svg class="schema" viewBox="0 0 240 128" role="img" aria-label="Un joueur atteint l'hôte par les ports UDP 7777 et 7778 de sa box"><path class="flux" d="M47 52H98"/><path class="flux" d="M47 76H98"/><path class="flux" d="M142 52L192 60"/><path class="flux" d="M142 76L192 68"/><rect class="noeud" x="98" y="34" width="44" height="60" rx="7"/><rect class="led" x="98" y="48" width="6" height="8"/><rect class="led" x="98" y="72" width="6" height="8"/><text class="s-t" x="120" y="68" text-anchor="middle" style="letter-spacing:.14em">BOX</text><text x="72" y="44" text-anchor="middle" style="font-size:11px">7777</text><text x="72" y="95" text-anchor="middle" style="font-size:11px">7778</text><circle class="noeud" cx="30" cy="64" r="15"/><text x="30" y="68.5" text-anchor="middle">A</text><circle class="noeud" cx="210" cy="64" r="15"/><text x="210" y="68.5" text-anchor="middle">H</text><text class="s-t" x="120" y="118" text-anchor="middle">DEUX PORTS UDP OUVERTS CHEZ L'HÔTE</text></svg><span class="eti">Pour les habitués</span><h3>Ouvrir les ports</h3><p>L'hôte ouvre deux ports UDP sur sa box et donne son adresse IP aux autres.</p>
+        <ul><li>UDP 7777 pour les parties</li><li>UDP 7778 pour les amis et les invitations</li></ul></div>
+    </div>
+  </div>
+</section>
+<section id="ports">
+  <div class="wrap">
+    <div class="tete" data-io>
+      <div class="eti"><span class="carre"></span>Ports</div>
+      <h2 class="m"><span>Les deux ports à connaître</span></h2>
+      <p class="intro">Seulement utiles si vous passez par Internet sans VPN, ou si un pare-feu bloque le jeu.</p>
+    </div>
+    <div class="reseau">
+      <div class="port" data-r><b>7777</b><span>Port UDP des parties</span></div>
+      <div class="port" data-r style="--d:1"><b>7778</b><span>Port UDP des amis et des invitations</span></div>
+      <div class="port" data-r style="--d:2"><b data-ver>3.5.0</b><span>Même version pour tout le monde : relancez le jeu, il se met à jour</span></div>
+    </div>
+    <p class="note">Si Windows ou ton pare-feu demande d'autoriser Zone Rouge sur le réseau au premier lancement, accepte : sans cela, tes potes ne verront pas ta partie.</p>
+  </div>
+</section>
+<section id="amis">
+  <div class="wrap">
+    <div class="tete" data-io>
+      <div class="eti"><span class="carre"></span>Amis</div>
+      <h2 class="m"><span>Retrouve tes potes en un clic</span></h2>
+      <p class="intro">Le jeu garde la liste de tes amis et te montre s'ils sont en ligne.</p>
+    </div>
+    <div class="feat">
+      <div data-r><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="18" cy="17" r="6"/><path d="M6 39c0-7 5-12 12-12s12 5 12 12"/><circle cx="34" cy="19" r="5"/><path d="M33 28c6 0 9 4 9 10"/></svg><h3>Une liste d'amis</h3><p>Ajoute tes potes une fois : tu vois s'ils sont en ligne, hors ligne ou déjà en partie.</p></div>
+      <div data-r style="--d:1"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M5 22L43 7 30 41l-6.5-14.5z"/><path d="M23.5 26.5L43 7"/></svg><h3>Des invitations</h3><p>Invite un ami dans ta partie, il la rejoint sans avoir à chercher l'adresse.</p></div>
+      <div data-r style="--d:2"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M28 8h11v32H28"/><path d="M6 24h22M20 16l8 8-8 8"/></svg><h3>Rejoindre en cours de route</h3><p>Pas besoin d'attendre la fin du match : tes potes peuvent vous rejoindre pendant la partie.</p></div>
+    </div>
+  </div>
+</section>
+<section class="cta-section">
+  <div class="wrap">
+    <div class="cta" data-io>
+      <div class="bombe" data-bombe aria-hidden="true"><svg viewBox="0 0 120 120"><circle class="t0" cx="60" cy="60" r="52"/><circle class="t1" cx="60" cy="60" r="52"/></svg><div class="num">0:40</div></div>
+      <div><h2 class="m"><span>Prêt à inviter tes potes ?</span></h2><p>Gratuit, sans compte, et mis à jour tout seul. Tes potes Windows et Linux jouent dans les mêmes parties.</p></div>
+      <div class="actions"><a class="btn prim" href="telecharger.html" data-adapt><span class="t">Télécharger gratuitement</span> <span class="fl">Windows · Linux</span></a></div>
+    </div>
+  </div>
+</section>
+</main>
+<footer>
+  <div class="wrap cols">
+    <div>
+      <div class="marque"><span class="carre"></span>ZONE ROUGE</div>
+      <p>Le FPS entre potes, gratuit, pour Windows et Linux. Un projet indépendant fait avec Godot 4.5, sans publicité.</p>
+    </div>
+    <div>
+      <h4>Le site</h4>
+      <ul>
+        <li><a href="le-jeu.html">Le jeu</a></li>
+        <li><a href="arsenal.html">Arsenal</a></li>
+        <li><a href="telecharger.html">Télécharger</a></li>
+        <li><a href="reseau.html">Jouer entre potes</a></li>
+        <li><a href="nouveautes.html">Nouveautés</a></li>
+        <li><a href="faq.html">Questions fréquentes</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Liens</h4>
+      <ul>
+        <li><a href="https://github.com/Titan-CyberTech/Zone_Rouge">Code et suivi sur GitHub</a></li>
+        <li><a href="https://github.com/Titan-CyberTech/Zone_Rouge/releases">Toutes les versions</a></li>
+        <li><a href="https://github.com/Titan-CyberTech/Zone_Rouge/issues">Signaler un problème</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="mot" aria-hidden="true" style="--em:6.811">ZONE ROUGE</div>
+  <div class="wrap petit"><span>Version <span data-ver>3.5.0</span></span><button class="calme-b" type="button" data-calme aria-pressed="false">Réduire les animations</button><a href="#haut">Haut de page</a></div>
+</footer>
+</body>
+</html>
